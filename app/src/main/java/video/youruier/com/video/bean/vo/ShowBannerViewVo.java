@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 public class ShowBannerViewVo implements IListVO {
-    public static final int SHOW_BANNER_TYPE = 01000;
+    public static final int SHOW_BANNER_TYPE = 01000 + + BaseRVAdatpter.HEADER_VIEW_TYPE;
 
     private List<ShowVideoListVo> top;
 
@@ -24,6 +24,6 @@ public class ShowBannerViewVo implements IListVO {
 
     @Override
     public int getItemType() {
-        return SHOW_BANNER_TYPE + BaseRVAdatpter.HEADER_VIEW_TYPE;
+        return SHOW_BANNER_TYPE;
     }
 }

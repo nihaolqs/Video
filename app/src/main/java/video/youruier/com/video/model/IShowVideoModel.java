@@ -16,7 +16,7 @@ public interface IShowVideoModel {
 
     List<IListVO> getVoList();
 
-    void rePlaceData(String type);
+    void replaceData(String type);
 
 
 }

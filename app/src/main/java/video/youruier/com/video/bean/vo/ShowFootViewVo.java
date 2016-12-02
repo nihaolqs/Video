@@ -8,7 +8,7 @@ import com.lqs.fast.mvpframework.bean.vo.IListVO;
  */
 
 public class ShowFootViewVo implements IListVO {
-    public static final int SHOW_FOOT_VIEW_TYPR = 0100;
+    public static final int SHOW_FOOT_VIEW_TYPR =  BaseRVAdatpter.HEADER_VIEW_TYPE + 0100;
 
     private String type;
     private String title;
@@ -31,6 +31,6 @@ public class ShowFootViewVo implements IListVO {
 
     @Override
     public int getItemType() {
-        return BaseRVAdatpter.HEADER_VIEW_TYPE + SHOW_FOOT_VIEW_TYPR;
+        return SHOW_FOOT_VIEW_TYPR;
     }
 }

@@ -15,4 +15,6 @@ public interface IShowVideoView {
     IShowVideoPresenter getShowVideoPresenter();
 
     void showVoList(List<IListVO> listVOs);
+
+    String getType();
 }

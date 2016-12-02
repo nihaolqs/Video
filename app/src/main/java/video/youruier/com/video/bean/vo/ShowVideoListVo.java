@@ -3,13 +3,15 @@ package video.youruier.com.video.bean.vo;
 import com.lqs.fast.mvpframework.base.adatpter.BaseRVAdatpter;
 import com.lqs.fast.mvpframework.bean.vo.IListVO;
 
+import java.io.Serializable;
+
 /**
  * Created by dell on 2016/12/1.
  */
 
-public class ShowVideoListVo implements IListVO {
+public class ShowVideoListVo implements IListVO, Serializable {
 
-    public static final int VIDEO_LIST_TYPE = 01;
+    public static final int VIDEO_LIST_TYPE = BaseRVAdatpter.CLICK_TYPE + BaseRVAdatpter.LONG_CLICK_TYPE + 01;
 
     private String title;
     private String cover;
@@ -41,6 +43,6 @@ public class ShowVideoListVo implements IListVO {
 
     @Override
     public int getItemType() {
-        return BaseRVAdatpter.CLICK_TYPE + BaseRVAdatpter.LONG_CLICK_TYPE + VIDEO_LIST_TYPE;
+        return VIDEO_LIST_TYPE;
     }
 }

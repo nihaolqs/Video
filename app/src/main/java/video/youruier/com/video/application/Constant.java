@@ -6,6 +6,6 @@ package video.youruier.com.video.application;
 
 public class Constant {
     public class Apiclient{
-
+        public static final String SHOW_MAIN = "http://192.168.0.240:8080/BiliBili.txt";
     }
 }

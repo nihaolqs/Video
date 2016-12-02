@@ -19,7 +19,7 @@ import video.youruier.com.video.bean.vo.ShowVideoListVo;
  * Created by dell on 2016/12/1.
  */
 
-public class show implements Mapper<List<IListVO>> {
+public class ShowVideo implements Mapper<List<IListVO>> {
 
     /**
      * code : 0
@@ -118,11 +118,12 @@ public class show implements Mapper<List<IListVO>> {
         @Override
         public List<IListVO> transform() {
             ArrayList<IListVO> listVOs = new ArrayList<>();
-
-            ShowBannerViewVo bannerViewVo = banner.transform();
-
-            listVOs.add(bannerViewVo);
-
+            if (banner != null) {
+                ShowBannerViewVo bannerViewVo = banner.transform();
+                if (bannerViewVo.getTop() != null && bannerViewVo.getTop().size() != 0) {
+                    listVOs.add(bannerViewVo);
+                }
+            }
             ShowTitleVo showTitleVo = new ShowTitleVo();
             showTitleVo.setTitle(title);
             showTitleVo.setType(type);
@@ -131,7 +132,7 @@ public class show implements Mapper<List<IListVO>> {
 
             for (VideoBean bean : body) {
                 ShowVideoListVo transform = bean.transform();
-                listVOs.add(bannerViewVo);
+                listVOs.add(transform);
 
             }
 
@@ -158,8 +159,10 @@ public class show implements Mapper<List<IListVO>> {
             @Override
             public ShowBannerViewVo transform() {
                 ArrayList<ShowVideoListVo> listVos = new ArrayList<>();
-                for (VideoBean bean : top) {
-                    listVos.add(bean.transform());
+                if (top != null) {
+                    for (VideoBean bean : top) {
+                        listVos.add(bean.transform());
+                    }
                 }
                 ShowBannerViewVo showBannerViewVo = new ShowBannerViewVo();
                 showBannerViewVo.setTop(listVos);

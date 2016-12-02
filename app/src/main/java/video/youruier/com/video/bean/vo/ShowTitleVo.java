@@ -8,7 +8,7 @@ import com.lqs.fast.mvpframework.bean.vo.IListVO;
  */
 
 public class ShowTitleVo implements IListVO {
-    public static final int TITLE_VIEW_TYPE = 010;
+    public static final int TITLE_VIEW_TYPE = 010 + BaseRVAdatpter.HEADER_VIEW_TYPE;
 
     private String type;
     private String title;
@@ -31,6 +31,6 @@ public class ShowTitleVo implements IListVO {
 
     @Override
     public int getItemType() {
-        return BaseRVAdatpter.HEADER_VIEW_TYPE + TITLE_VIEW_TYPE;
+        return TITLE_VIEW_TYPE;
     }
 }

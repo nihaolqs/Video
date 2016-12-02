@@ -25,7 +25,7 @@ import video.youruier.com.video.view.IShowVideoView;
  * Created by dell on 2016/12/1.
  */
 
-public class ShowVideoFragment extends ABaseListView implements IShowVideoView{
+public class ShowVideoFragment extends ABaseListView implements IShowVideoView {
     public static final String TAG = "ShowVideoFragment";
 
     public static final String BUNDLE_KEY_TYPE = "bundle_key_type";
@@ -42,7 +42,9 @@ public class ShowVideoFragment extends ABaseListView implements IShowVideoView{
     @Override
     protected void initData() {
         Bundle bundle = getArguments();
-        mType = bundle.getString(BUNDLE_KEY_TYPE);
+        if (bundle != null) {
+            mType = bundle.getString(BUNDLE_KEY_TYPE);
+        }
     }
 
     @Override
@@ -55,11 +57,11 @@ public class ShowVideoFragment extends ABaseListView implements IShowVideoView{
         layoutManager = new GridLayoutManager(getContext(), 2);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerViewAdapter = new MyShowVideoAdatpter();
+        mRecyclerViewAdapter = new MyShowVideoAdatpter(getChildFragmentManager());
         mRecyclerViewAdapter.setClickListener(new BaseRVAdatpter.IRVItemClickListener() {
             @Override
             public void onClick(View itemView, int posiction) {
-                
+                //TODO 行点击事件处理
             }
         });
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
@@ -78,7 +80,7 @@ public class ShowVideoFragment extends ABaseListView implements IShowVideoView{
     protected void initMVP() {
         ShowVideoFragmentPresenter presenter = new ShowVideoFragmentPresenter();
         ShowVideoFragmentModel model = new ShowVideoFragmentModel();
-        MvpUtils.initMVP(model,presenter,this);
+        MvpUtils.initMVP(model, presenter, this);
     }
 
     @Override
@@ -87,10 +89,14 @@ public class ShowVideoFragment extends ABaseListView implements IShowVideoView{
         return (IShowVideoPresenter) presenter;
     }
 
-
-
     @Override
     public void showVoList(List<IListVO> listVOs) {
+        mRecyclerViewAdapter.addDataList(listVOs);
+        mRecyclerViewAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public String getType() {
+        return mType;
     }
 }

@@ -8,8 +8,17 @@ import video.youruier.com.video.view.IShowVideoView;
  */
 
 public interface IShowVideoPresenter {
+
     IShowVideoModel getShowVideoModel();
 
     IShowVideoView getShowVideoView();
+
+    void showVideos();
+
+    void showPlayActivity(String url);
+
+    void showTypeVideos(String type);
+
+    void replaceData();
 
 }
